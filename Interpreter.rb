@@ -7,8 +7,8 @@ def read_until_matching(s, start)
   stack_height = 0
   s[start + 1..s.length].each_char.with_index(1) do |c, i|
     case c
-    when '{' then stack_height += 1
-    when '}' then
+    when '}' then stack_height += 1
+    when '{' then
       stack_height -= 1
       if stack_height == -1 then
         return i + start
@@ -192,12 +192,12 @@ class Interpreter
       raise BrainFlakError.new("Maximum cycles exceeded", @index + 1)
     end
     current_symbol = @source[@index..@index+1] or @source[@index]
-    if ['()', '[]', '{}', '<>'].include? current_symbol
+    if [')(', '][', '}{', '><'].include? current_symbol
       case current_symbol
-        when '()' then round_nilad()
-        when '[]' then square_nilad()
-        when '{}' then curly_nilad()
-        when '<>' then angle_nilad()
+        when ')(' then round_nilad()
+        when '][' then square_nilad()
+        when '}{' then curly_nilad()
+        when '><' then angle_nilad()
       end
       @last_op = :nilad
       @index += 2
@@ -206,19 +206,19 @@ class Interpreter
       current_symbol = current_symbol[0]
       if is_opening_bracket?(current_symbol) then
         case current_symbol
-          when '(' then open_round()
-          when '[' then open_square()
-          when '<' then open_angle()
-          when '{' then open_curly()
+          when ')' then open_round()
+          when ']' then open_square()
+          when '>' then open_angle()
+          when '}' then open_curly()
         end
 
       elsif is_closing_bracket?(current_symbol) then
 
         case current_symbol
-          when ')' then close_round()
-          when ']' then close_square()
-          when '>' then close_angle()
-          when '}' then close_curly()
+          when '(' then close_round()
+          when '[' then close_square()
+          when '<' then close_angle()
+          when '{' then close_curly()
         end
       else raise BrainFlakError.new("Invalid character '%s'." % current_symbol, @index + 1)
       end
