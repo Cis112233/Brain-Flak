@@ -7,6 +7,18 @@ require_relative './BraceCheck.rb'
 VERSION_STRING =  "Brain-Flak Ruby Interpreter v1.5.2"
 
 require 'optparse'
+def reversed(string)
+  reversed_string = ''
+
+  i = 0
+  while i < string.length
+    reversed_string = string[i] + reversed_string
+    i += 1
+  end
+
+  return reversed_string
+end
+
 
 debug = false
 do_in = true
@@ -166,7 +178,9 @@ begin
 
   #Check the braces are matched
   braceCheck(source)
-
+  source2=source
+  #p reversed(source2)
+  #source+=source2
   case mode
   when "brainflak"
     interpreter = BrainFlakInterpreter.new(source, numbers, [], debug, max_cycles)
