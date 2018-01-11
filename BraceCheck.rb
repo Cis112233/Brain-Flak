@@ -1,7 +1,7 @@
 require_relative './BrainFlakError.rb'
 
 def braceCheck(source)
-  matches = ["()","[]","<>","{}"]
+  matches = [")(","][","><","}{"]
   stack = []
   checking = true
   source.split("").each_with_index do |char, i|
