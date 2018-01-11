@@ -27,17 +27,17 @@ class BrainFlueueInterpreter < Interpreter
   # Open Braces ~~~~~~~~~~~~~~~~
 
   def open_round()
-    @main_stack.push(['(', @current_value, @index])
+    @main_stack.push([')', @current_value, @index])
     @current_value = 0
   end
 
   def open_square()
-    @main_stack.push(['[', @current_value, @index])
+    @main_stack.push([']', @current_value, @index])
     @current_value = 0
   end
 
   def open_curly()
-    @main_stack.push(['{', 0, @index])
+    @main_stack.push(['}', 0, @index])
     new_index = read_until_matching(@source, @index)
     if active_stack.data.first == 0 or active_stack.data.first == nil then
       @main_stack.pop()
@@ -46,7 +46,7 @@ class BrainFlueueInterpreter < Interpreter
   end
 
   def open_angle()
-    @main_stack.push(['<', @current_value, @index])
+    @main_stack.push(['>', @current_value, @index])
     @current_value = 0
   end
 
