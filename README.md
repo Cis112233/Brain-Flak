@@ -1,3 +1,6 @@
+#To undertand Pain-Flak you need to know brain-flak, so read this:
+
+
 # Brain-Flak
 
 Brain-Flak is an "Turing-tarpit", e.g. a language which can, *in theory* compute anything, but in reality is very inconvenient and painful to use. It was heavily inspired by [Brainf**k](https://esolangs.org/wiki/Brainfuck), the original turing-tarpit.
@@ -67,3 +70,10 @@ Here are some full programs that do interesting things.
 ### Print the first *N* Fibonacci numbers:
 
     <>((()))<>{({}[()])<>({}<>)<>(({})<>({}<>))<>}<>{}{}
+
+
+
+#Back to the pain
+First, all brackets are reversed i.e. '()' becomes ')('.
+
+Next the code is run once foward and once backward now '))((' will push '1' twice not push '1' then error out because `(())` would not be valid
