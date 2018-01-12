@@ -1,7 +1,5 @@
 require_relative './stack.rb'
 require_relative './BrainFlakInterpreter.rb'
-require_relative './BrainFlueueInterpreter.rb'
-require_relative './ClassicInterpreter.rb'
 require_relative './BraceCheck.rb'
 
 VERSION_STRING =  "Brain-Flak Ruby Interpreter v1.5.2"
@@ -28,7 +26,6 @@ ascii_out = false
 reverse = false
 arg_path = ""
 max_cycles = -1
-mode = "brainflak"
 from_file = true
 
 parser = OptionParser.new do |opts|
@@ -64,10 +61,6 @@ parser = OptionParser.new do |opts|
 
   opts.on("-f", "--file=FILE", "Reads input for the brain-flak program from FILE, rather than from the command line.") do |file|
     arg_path = file
-  end
-
-  opts.on("-l","--language=LANGUAGE", "Changes the language to be interpreted.  Brain-Flak is the default but Miniflak, Brain-Flueue and Brain-Flak-Classic are also options.") do |lang|
-    mode = lang[0..-1].downcase.strip.gsub("-fl","fl")
   end
 
   opts.on("-a", "--ascii-in", "Take input in character code points and output in decimal. This overrides previous -A and -c flags.") do 
@@ -181,22 +174,7 @@ begin
   source2=source
   #p reversed(source2)
   #source+=source2
-  case mode
-  when "brainflak"
-    interpreter = BrainFlakInterpreter.new(source, numbers, [], debug, max_cycles)
-  when "classic"
-    interpreter = ClassicInterpreter.new(source, numbers, [], debug, max_cycles, ascii_out)
-  when "miniflak", "mini"
-    source = source.gsub(/#.*(\n|$)/,"").gsub(/[^\[\]{}()]/,"") # Parsing is done here so that we can strip `[]` properly
-    while source =~ /\[\]/
-      source = source.gsub("[]","")
-    end
-    interpreter = BrainFlakInterpreter.new(source, numbers, [], debug, max_cycles)
-  when "brainflueue", "flueue"
-    interpreter = BrainFlueueInterpreter.new(source, numbers, [], debug, max_cycles)
-  else 
-    raise BrainFlakError.new("No language called '%s'." % mode, 0)
-  end
+  interpreter = BrainFlakInterpreter.new(source, numbers, [], debug, max_cycles)
   while interpreter.step
   end
   if interpreter.main_stack.length > 0
