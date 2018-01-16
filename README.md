@@ -50,7 +50,7 @@ That's it. That's the whole language.
 # Back to the pain
 
 
-The code is reversed (with bracket swap so `))((` would be `))((` again not `(())`) and concated to the end of the original source. Then it is run.
+The code is reversed (with bracket swap so `))((` would be `))((` again not `(())`) and concatenated to the end of the original source. Then it is run.
 ## Example:
 Code:
 `)))(((}{`
