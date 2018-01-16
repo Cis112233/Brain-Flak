@@ -65,7 +65,7 @@ class BrainFlakInterpreter < Interpreter
   end
 
   def close_curly()
-    data = @main_stack.pop() 
+    data = @main_stack.pop()
     @index = data[2] - 1
     @last_op = :close_curly
     @current_value += data[1]

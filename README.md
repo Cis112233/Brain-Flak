@@ -1,4 +1,4 @@
-#To undertand Pain-Flak you need to know brain-flak, so read this:
+# To undertand Pain-Flak you need to know brain-flak, so read this:
 
 
 # Brain-Flak
@@ -51,29 +51,21 @@ When the program is done executing, each value left on the active stack is print
 
 That's it. That's the whole language. 
 
-# Sample code
-
-Here are some full programs that do interesting things.
-
-### Adding two numbers:
-
-    ({}{})
-
-### Multiplying two numbers (Positive only):
-
-    {({}<(({})<>{})<>>[()])}<>
-
-### Square a number (Positive only):
-
-    ({({})({}[()])}{})
-
-### Print the first *N* Fibonacci numbers:
-
-    <>((()))<>{({}[()])<>({}<>)<>(({})<>({}<>))<>}<>{}{}
 
 
 
-#Back to the pain
+# Back to the pain
 First, all brackets are reversed i.e. '()' becomes ')('.
 
-Next the code is run once foward and once backward now '))((' will push '1' twice not push '1' then error out because `(())` would not be valid
+And now the code is reversed (with bracket swap so `))((` would be `))((` again not `(())`) and concated to the end of the original source. Then it is run.
+
+Code:
+`)))(((}{`
+
+Gets transformed into:
+`)))(((}{}{)))(((`
+
+And when run returns:
+`1`
+
+`1`
