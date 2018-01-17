@@ -16,7 +16,7 @@ reverse = false
 arg_path = ""
 max_cycles = -1
 from_file = true
-beforerun = false
+beforerun = true
 parser = OptionParser.new do |opts|
   opts.banner = "\nBrain-Flak Ruby Interpreter\n"\
                 "Usage:\n"\
@@ -97,8 +97,8 @@ parser = OptionParser.new do |opts|
   opts.on("-e", "--execute", "Executes the first command line argument as Brain-Flak code.") do
     from_file = false
   end
-  opts.on("-l", "--hard", "Checks if braces are mactched before running the code") do
-    beforerun = true
+  opts.on("-l", "--easu", "doesn't Checks if braces are mactched before running the code") do
+    beforerun = false
   end
 end
 
