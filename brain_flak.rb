@@ -16,7 +16,6 @@ reverse = false
 arg_path = ""
 max_cycles = -1
 from_file = true
-beforerun = true
 parser = OptionParser.new do |opts|
   opts.banner = "\nBrain-Flak Ruby Interpreter\n"\
                 "Usage:\n"\
@@ -97,9 +96,7 @@ parser = OptionParser.new do |opts|
   opts.on("-e", "--execute", "Executes the first command line argument as Brain-Flak code.") do
     from_file = false
   end
-  opts.on("-l", "--easu", "doesn't Checks if braces are mactched before running the code") do
-    beforerun = false
-  end
+  
 end
 
 begin
@@ -161,9 +158,9 @@ begin
   numbers.reverse! if !reverse
 
   #Check the braces are matched
-  if beforerun then
-    braceCheck(source)
-  end
+  
+  braceCheck(source)
+  
   source2=source
   source2=source2.tr('][)(}{><','[](){}<>').reverse
   source+=source2
