@@ -66,3 +66,8 @@ And when run returns:
 
 ## Note:
 I am going to be adding a decent amount of new features and removing some, in brain-flak you can use comments but now you cannot in pain-flak. More control flow will be coming
+
+
+##Soft Hello World (doesn't use -l):
+
+`><))))))))))))()()()((}{(}{(}{)((((}{}{)((][][][][(][][(]][[)((]][][][][][[)(()‌​])][)][(][][}{([)()()()]][[))])()()([)])][][][([))))}{)((}{(((}{}{(((((>`
