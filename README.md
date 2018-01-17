@@ -22,7 +22,7 @@ These are concatenated together when they are evaluated. So if we had a '3' on t
 
     )()(}{
   
-would evaluate to `1 + 1 + active.pop()` which would evaluate to 5.
+would evaluate to `1 + 1 + active.pop()` which would evaluate to 5. Note: this would not actually evaluate to 5 but more on that later.
 
 The monads take one argument, a chunk of Brain-Flak code. Here are all of the monads:
 
@@ -68,9 +68,7 @@ And when run returns:
 I am going to be adding a decent amount of new features and removing some, in brain-flak you can use comments but now you cannot in pain-flak. More control flow will be coming
 
 
-## Soft Hello World (doesn't use -l):
 
-`><))))))))))))()()()((}{(}{(}{)((((}{}{)((][][][][(][][(]][[)((]][][][][][[)(()‌​])][)][(][][}{([)()()()]][[))])()()([)])][][][([))))}{)((}{(((}{}{(((((>`
 
 ## Hard Hello World (provided by @Dennis also):
 `><))))))))))))()()()((}{(}{(}{)((((}{}{)((][][][][(][][(]][[)((]][][][][][[)(()‌​])][)][(][][}{([)()()()]][[))])()()([)])][][][([))))}{)((}{(((}{}{(((((}><{`
