@@ -22,7 +22,7 @@ These are concatenated together when they are evaluated. So if we had a '3' on t
 
     )()(}{
   
-would evaluate to `1 + 1 + active.pop()` which would evaluate to 5. Note: this would not actually evaluate to 5 but more on that later.
+would evaluate to `1 + 1 + active.pop()` which would evaluate to 5.
 
 The monads take one argument, a chunk of Brain-Flak code. Here are all of the monads:
 
